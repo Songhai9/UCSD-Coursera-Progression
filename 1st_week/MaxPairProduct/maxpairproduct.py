@@ -26,8 +26,5 @@ def maxpairproductfast(A):
 
 n = int(input())
 
-n = int(input())
 A = [int(i) for i in input().split()]
-print(maxpairproductfast(A))
-
 print(maxpairproductfast(A))
