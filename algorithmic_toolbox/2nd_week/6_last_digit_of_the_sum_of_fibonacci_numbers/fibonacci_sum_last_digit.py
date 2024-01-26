@@ -1,37 +1,21 @@
-def find_cycle():
-    previous = 0
-    current = 1
-    iterator = 0
+def list_last():
+    arr = [0, 1]
+    index = 2
 
     while True:
-        previous, current = current, (previous + current) % 10
-        iterator += 1
-        if previous == 0 and current == 1:
+        arr.append((arr[index - 1] + arr[index - 2]) % 10)
+        if arr[index] == 1 and arr[index - 1] == 0:
+            index = index - 1
             break
+        index += 1
 
-    return iterator
-
-
-def formula(n):
-    return (n * (n + 1)) / 2
+    return arr
 
 
 def fibonacci_sum(n):
-    if n <= 1:
-        return n
-
-    fibo_sum = formula(n)
-    previous = 0
-    current = 1
-
-    last_digit = [0] * 60
-    last_digit[1] = 1
-
-    for index in range(2, len(last_digit)):
-        (previous, current) = (current, (previous + current) % 10)
-        last_digit[index] = current
-
-    return last_digit[int(fibo_sum % 60)]
+    arr = list_last()
+    number = (arr[(n + 2) % 60] - 1) % 10
+    return number
 
 
 if __name__ == '__main__':
